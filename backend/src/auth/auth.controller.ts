@@ -9,9 +9,14 @@ import { PrivacySettings } from './user.entity';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Post('send-code')
+  sendCode(@Body('email') email: string) {
+    return this.authService.sendVerificationCode(email);
+  }
+
   @Post('register')
-  register(@Body() dto: RegisterDto) {
-    return this.authService.register(dto);
+  register(@Body() body: RegisterDto & { code: string }) {
+    return this.authService.register(body);
   }
 
   @Post('login')
