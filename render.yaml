@@ -7,7 +7,7 @@ services:
     plan: free
     dockerfilePath: ./backend/Dockerfile.prod
     dockerContext: ./backend
-    healthCheckPath: /api/auth/me
+    healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production

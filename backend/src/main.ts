@@ -16,9 +16,12 @@ async function bootstrap() {
     credentials: true,
   });
 
+  // Public health check for Render / load balancers
+  const httpAdapter = app.getHttpAdapter();
+  httpAdapter.get('/health', (_req: any, res: any) => res.status(200).json({ status: 'ok' }));
+
   const port = parseInt(process.env.PORT || '3000', 10);
   await app.listen(port, '0.0.0.0');
-  // eslint-disable-next-line no-console
   console.log(`Backend listening on :${port}`);
 }
 bootstrap();
