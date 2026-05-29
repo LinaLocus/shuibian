@@ -31,7 +31,7 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_API_URL
-        sync: false      # paste backend URL after first deploy, e.g. https://shuibian-api.onrender.com/api
+        value: https://shuibian-api.onrender.com/api
     routes:
       - type: rewrite
         source: /*
