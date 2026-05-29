@@ -19,6 +19,10 @@ export class MailService {
       port: 587,
       secure: false,
       requireTLS: true,
+      family: 4,
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
@@ -54,6 +58,9 @@ export class MailService {
           <p style="color:#9ca3af;font-size:12px;margin:24px 0 0;">如非本人操作请忽略此邮件。</p>
         </div>
       `,
+    }).catch((err) => {
+      this.logger.error(`Failed to send email to ${email}: ${err.message}`, err.stack);
+      throw err;
     });
 
     this.logger.log(`Sent verification code to ${email}`);
