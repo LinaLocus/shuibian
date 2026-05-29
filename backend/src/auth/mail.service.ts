@@ -19,7 +19,6 @@ export class MailService {
       port: 587,
       secure: false,
       requireTLS: true,
-      family: 4,
       connectionTimeout: 10000,
       greetingTimeout: 10000,
       socketTimeout: 15000,
@@ -27,7 +26,8 @@ export class MailService {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
       },
-    });
+      family: 4,
+    } as any);
   }
 
   async sendCode(email: string): Promise<void> {
