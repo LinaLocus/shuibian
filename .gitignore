@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.vite/
+.eslintcache
+
+# Docker
+.docker/
+
+# Coverage
+coverage/
+
+# TypeORM
+ormlogs.log
+
+# CodeGraph
+.codegraph/
+
+# DB dumps (never commit data)
+*.sql
+*.dump
+*.backup
+pgdata/
+
+# Cursor / Claude local
+.cursor/
+
+# Render
+.render/

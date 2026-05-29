@@ -1,0 +1,28 @@
+{
+  "name": "谁便 — 排便健康记录",
+  "short_name": "谁便",
+  "description": "记录排便健康，追踪肠道趋势",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#f9fafb",
+  "theme_color": "#4CAF50",
+  "lang": "zh-CN",
+  "categories": ["health", "lifestyle", "medical"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
