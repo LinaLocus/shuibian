@@ -4,6 +4,7 @@ import BristolStep from './components/BristolStep';
 import BasicInfoStep from './components/BasicInfoStep';
 import SymptomsStep from './components/SymptomsStep';
 import ScoreReveal from './components/ScoreReveal';
+import api from '../../api/client';
 
 export interface RecordFormData {
   bristolType: number;
@@ -71,32 +72,19 @@ export default function RecordFlow() {
     setSubmitting(true);
     setError('');
     try {
-      const token = localStorage.getItem('token');
-      const res = await fetch('/api/records', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          mode: 'quick',
-          bristolType: formData.bristolType,
-          color: formData.color,
-          effort: formData.effort,
-          comfort: formData.comfort,
-          duration: formData.duration || 5,
-          symptoms: formData.symptoms,
-        }),
+      const { data } = await api.post('/records', {
+        mode: 'quick',
+        bristolType: formData.bristolType,
+        color: formData.color,
+        effort: formData.effort,
+        comfort: formData.comfort,
+        duration: formData.duration || 5,
+        symptoms: formData.symptoms,
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => null);
-        throw new Error(body?.message || `请求失败 (${res.status})`);
-      }
-      const data = await res.json();
       setScore(data.healthScore);
       goNext();
     } catch (err: any) {
-      setError(err.message || '网络异常，请检查连接后重试');
+      setError(err.response?.data?.message || err.message || '网络异常，请检查连接后重试');
     } finally {
       setSubmitting(false);
     }
