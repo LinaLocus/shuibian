@@ -39,7 +39,7 @@ export class Alert {
   @Column()
   subjectUserId: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'uuid', nullable: true })
   recordId: string | null;
 
   @Column({ type: 'enum', enum: AlertType })
