@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { X } from 'lucide-react';
 import BristolStep from './components/BristolStep';
 import BasicInfoStep from './components/BasicInfoStep';
 import SymptomsStep from './components/SymptomsStep';
@@ -31,6 +33,7 @@ const slideVariants = {
 };
 
 export default function RecordFlow() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
   const [submitting, setSubmitting] = useState(false);
@@ -117,6 +120,14 @@ export default function RecordFlow() {
 
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-6 dark:bg-gray-950">
+      {/* Close button */}
+      <button
+        onClick={() => navigate('/')}
+        className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-600 shadow-sm backdrop-blur-sm transition-colors hover:bg-white dark:bg-gray-800/80 dark:text-gray-300 dark:hover:bg-gray-800"
+        aria-label="返回首页"
+      >
+        <X size={20} />
+      </button>
       {/* Error toast */}
       <AnimatePresence>
         {error && (
