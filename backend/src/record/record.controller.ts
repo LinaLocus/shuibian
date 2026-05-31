@@ -10,25 +10,35 @@ import {
   UseGuards,
   Req,
   NotFoundException,
+  Logger,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Response } from 'express';
 import { RecordService } from './record.service';
 import { HealthService } from '../health/health.service';
+import { AlertService } from '../alert/alert.service';
 import { CreateRecordDto } from './dto/create-record.dto';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('records')
 export class RecordController {
+  private readonly logger = new Logger(RecordController.name);
+
   constructor(
     private readonly recordService: RecordService,
     private readonly healthService: HealthService,
+    private readonly alertService: AlertService,
   ) {}
 
   @Post()
   async create(@Req() req: any, @Body() dto: CreateRecordDto) {
     const record = await this.recordService.create(req.user.id, dto);
     const healthScore = await this.healthService.calculateAndSave(record);
+    try {
+      await this.alertService.evaluateAndDispatch(record, healthScore);
+    } catch (err) {
+      this.logger.error('Alert evaluation failed', err);
+    }
     return { record, healthScore };
   }
 

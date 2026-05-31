@@ -19,6 +19,7 @@ import {
 import api from '../api/client';
 import { useAuth } from '../hooks/useAuth';
 import ChatPanel from '../components/ChatPanel';
+import FamilyAlertBanner from '../features/alert/FamilyAlertBanner';
 
 interface FamilySummary {
   id: string;
@@ -386,6 +387,9 @@ function FamilyDetailView({
           <p className="text-xs text-gray-500 dark:text-gray-400">{detail.members.length} 位成员</p>
         </div>
       </motion.div>
+
+      {/* Danger Alert Banner */}
+      <FamilyAlertBanner familyId={detail.id} />
 
       {/* Invite code card */}
       <motion.div

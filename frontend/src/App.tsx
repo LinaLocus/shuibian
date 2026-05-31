@@ -15,6 +15,7 @@ import RecordDetailPage from './pages/RecordDetailPage';
 import DietPage from './pages/DietPage';
 import DietInsightsPage from './pages/DietInsightsPage';
 import RecordFlow from './features/record/RecordFlow';
+import AlertListPage from './features/alert/AlertListPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/records/:id" element={<RecordDetailPage />} />
           <Route path="/diet" element={<DietPage />} />
           <Route path="/diet/insights" element={<DietInsightsPage />} />
+          <Route path="/alerts" element={<AlertListPage />} />
         </Route>
         <Route
           path="/record"

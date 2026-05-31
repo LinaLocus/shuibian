@@ -6,6 +6,7 @@ import { HealthModule } from './health/health.module';
 import { FamilyModule } from './family/family.module';
 import { StatsModule } from './stats/stats.module';
 import { FoodModule } from './food/food.module';
+import { AlertModule } from './alert/alert.module';
 
 const useDatabaseUrl = !!process.env.DATABASE_URL;
 
@@ -37,6 +38,7 @@ const useDatabaseUrl = !!process.env.DATABASE_URL;
     FamilyModule,
     StatsModule,
     FoodModule,
+    AlertModule,
   ],
 })
 export class AppModule {}

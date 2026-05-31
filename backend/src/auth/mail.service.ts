@@ -72,7 +72,44 @@ export class MailService {
     this.store.delete(email);
     return true;
   }
+
+  async sendAlertEmail(to: string, title: string, summary: string, severity: string): Promise<void> {
+    const colorMap: Record<string, string> = {
+      danger: '#EF4444',
+      warn: '#F59E0B',
+      info: '#3B82F6',
+    };
+    const color = colorMap[severity] || '#6B7280';
+
+    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': process.env.BREVO_API_KEY!,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: { name: '谁便', email: process.env.BREVO_USER },
+        to: [{ email: to }],
+        subject: `【谁便】${title}`,
+        htmlContent: `
+          <div style="font-family:sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;background:#f9fafb;border-radius:16px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+              <div style="width:12px;height:12px;border-radius:50%;background:${color};"></div>
+              <h2 style="color:#111827;margin:0;font-size:18px;">${title}</h2>
+            </div>
+            <p style="color:#4b5563;font-size:14px;line-height:1.6;margin:0 0 24px;">${summary}</p>
+            <a href="https://shuibian.onrender.com/alerts" style="display:inline-block;padding:10px 20px;background:#4CAF50;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;">查看详情</a>
+            <p style="color:#9ca3af;font-size:12px;margin:24px 0 0;">此邮件由谁便健康记录自动发送。</p>
+          </div>
+        `,
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      this.logger.error(`Alert email failed ${res.status}: ${err}`);
+    } else {
+      this.logger.log(`Sent alert email to ${to}: ${title}`);
+    }
+  }
 }
-
-
-

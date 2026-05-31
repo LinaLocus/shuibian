@@ -8,6 +8,7 @@ import {
   User,
 } from 'lucide-react';
 import { useKeyboardOpen } from '../hooks/useKeyboard';
+import AlertBell from '../features/alert/AlertBell';
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: '首页' },
@@ -30,10 +31,11 @@ export default function AppLayout() {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 shadow-lg shadow-primary-500/30">
               <span className="text-lg font-bold text-white">S</span>
             </div>
-            <div>
+            <div className="flex-1">
               <h1 className="text-lg font-bold text-gray-900 dark:text-white">谁便</h1>
               <p className="text-xs text-gray-500 dark:text-gray-400">健康记录</p>
             </div>
+            <AlertBell />
           </div>
 
           <nav className="flex-1 px-3">
@@ -75,6 +77,11 @@ export default function AppLayout() {
           </div>
         </div>
       </aside>
+
+      {/* Mobile Top Bar */}
+      <div className="fixed right-4 top-3 z-50 lg:hidden">
+        <AlertBell />
+      </div>
 
       {/* Main Content */}
       <main
