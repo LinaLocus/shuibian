@@ -9,6 +9,7 @@ import { FoodModule } from './food/food.module';
 import { AlertModule } from './alert/alert.module';
 import { PostModule } from './post/post.module';
 import { UploadModule } from './upload/upload.module';
+import { ToiletModule } from './toilet/toilet.module';
 
 const useDatabaseUrl = !!process.env.DATABASE_URL;
 
@@ -43,6 +44,7 @@ const useDatabaseUrl = !!process.env.DATABASE_URL;
     AlertModule,
     PostModule,
     UploadModule,
+    ToiletModule,
   ],
 })
 export class AppModule {}

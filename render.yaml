@@ -25,6 +25,8 @@ services:
         sync: false      # paste from Cloudinary dashboard
       - key: CLOUDINARY_UPLOAD_PRESET
         sync: false      # create an unsigned upload preset in Cloudinary settings
+      - key: AMAP_KEY
+        sync: false      # paste your Amap (高德) Web Service API key
 
   # ===== Frontend: Vite static site =====
   - type: web

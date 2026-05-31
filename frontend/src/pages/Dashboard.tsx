@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Plus, TrendingUp, Droplets, Activity, Utensils, ChevronRight } from 'lucide-react';
+import { Plus, TrendingUp, Droplets, Activity, Utensils, ChevronRight, MapPin } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import api from '../api/client';
 import MiniTrendChart from '../components/MiniTrendChart';
@@ -129,7 +129,24 @@ export default function Dashboard() {
         <ChevronRight size={18} className="text-gray-400 dark:text-gray-500" />
       </motion.button>
 
-      {/* Health Status Card */}
+      {/* Find toilet quick action */}
+      <motion.button
+        variants={fadeUp}
+        onClick={() => navigate('/jieyou')}
+        whileTap={{ scale: 0.98 }}
+        className="mb-6 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-200/60 bg-gradient-to-r from-emerald-50 to-teal-50 px-4 py-3.5 text-left shadow-sm dark:border-emerald-900/40 dark:from-emerald-900/20 dark:to-teal-900/20"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-md shadow-teal-500/30">
+            <MapPin size={18} />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">解忧之所</p>
+            <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">查找附近公共厕所</p>
+          </div>
+        </div>
+        <ChevronRight size={18} className="text-gray-400 dark:text-gray-500" />
+      </motion.button>
       <motion.div variants={fadeUp} className="relative mb-6 overflow-hidden rounded-3xl p-[1px]">
         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary-400 via-emerald-400 to-teal-400 opacity-80" />
         <motion.div
