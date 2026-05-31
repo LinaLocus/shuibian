@@ -16,6 +16,7 @@ import DietPage from './pages/DietPage';
 import DietInsightsPage from './pages/DietInsightsPage';
 import RecordFlow from './features/record/RecordFlow';
 import AlertListPage from './features/alert/AlertListPage';
+import PostListPage from './features/post/PostListPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/diet" element={<DietPage />} />
           <Route path="/diet/insights" element={<DietInsightsPage />} />
           <Route path="/alerts" element={<AlertListPage />} />
+          <Route path="/yaji" element={<PostListPage />} />
         </Route>
         <Route
           path="/record"

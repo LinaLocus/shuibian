@@ -21,6 +21,10 @@ services:
         value: 30d
       - key: CORS_ORIGINS
         sync: false      # paste your frontend URL after first deploy, e.g. https://shuibian.onrender.com
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false      # paste from Cloudinary dashboard
+      - key: CLOUDINARY_UPLOAD_PRESET
+        sync: false      # create an unsigned upload preset in Cloudinary settings
 
   # ===== Frontend: Vite static site =====
   - type: web

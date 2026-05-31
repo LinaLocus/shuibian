@@ -7,6 +7,8 @@ import { FamilyModule } from './family/family.module';
 import { StatsModule } from './stats/stats.module';
 import { FoodModule } from './food/food.module';
 import { AlertModule } from './alert/alert.module';
+import { PostModule } from './post/post.module';
+import { UploadModule } from './upload/upload.module';
 
 const useDatabaseUrl = !!process.env.DATABASE_URL;
 
@@ -39,6 +41,8 @@ const useDatabaseUrl = !!process.env.DATABASE_URL;
     StatsModule,
     FoodModule,
     AlertModule,
+    PostModule,
+    UploadModule,
   ],
 })
 export class AppModule {}

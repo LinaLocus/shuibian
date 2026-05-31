@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   ClipboardPlus,
   TrendingUp,
+  BookOpen,
   Users,
   User,
 } from 'lucide-react';
@@ -14,6 +15,7 @@ const navItems = [
   { to: '/', icon: LayoutDashboard, label: '首页' },
   { to: '/record', icon: ClipboardPlus, label: '记录' },
   { to: '/trends', icon: TrendingUp, label: '趋势' },
+  { to: '/yaji', icon: BookOpen, label: '雅集' },
   { to: '/family', icon: Users, label: '家庭' },
   { to: '/profile', icon: User, label: '我的' },
 ];
@@ -109,7 +111,7 @@ export default function AppLayout() {
                   <NavLink
                     key={item.to}
                     to={item.to}
-                    className="relative flex min-h-[44px] min-w-[44px] flex-col items-center justify-center px-3 py-1.5"
+                    className="relative flex min-h-[44px] flex-1 flex-col items-center justify-center px-1 py-1.5"
                   >
                     <motion.div
                       animate={isActive ? { y: -2 } : { y: 0 }}
