@@ -31,7 +31,7 @@ export default function AlertListPage() {
 
   return (
     <div className="mx-auto max-w-lg px-4 py-6">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between pr-12 lg:pr-0">
         <div className="flex items-center gap-2">
           <Bell size={20} className="text-gray-700 dark:text-gray-300" />
           <h1 className="text-lg font-bold text-gray-900 dark:text-white">告警通知</h1>

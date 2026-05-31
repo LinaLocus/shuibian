@@ -87,7 +87,7 @@ export default function Dashboard() {
       animate="show"
     >
       {/* Header */}
-      <motion.div variants={fadeUp} className="mb-6 flex items-center justify-between">
+      <motion.div variants={fadeUp} className="mb-6 flex items-center justify-between pr-12 lg:pr-0">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{greeting} {user?.nickname}</h1>
           <p className="text-sm text-gray-500 dark:text-gray-400">今天的肠道状态如何？</p>

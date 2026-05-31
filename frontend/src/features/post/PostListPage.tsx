@@ -40,7 +40,7 @@ export default function PostListPage() {
         <button
           onClick={handleRefresh}
           disabled={refreshing}
-          className="flex h-9 w-9 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 disabled:opacity-50 dark:text-gray-400 dark:hover:bg-gray-700"
+          className="mr-12 flex h-9 w-9 items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 disabled:opacity-50 lg:mr-0 dark:text-gray-400 dark:hover:bg-gray-700"
           aria-label="刷新"
         >
           <RefreshCw size={16} className={refreshing ? 'animate-spin' : ''} />
